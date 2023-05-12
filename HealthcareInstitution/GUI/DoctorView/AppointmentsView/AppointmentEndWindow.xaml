@@ -1,0 +1,23 @@
+﻿<Window x:Class="HealthcareInstitution.GUI.DoctorView.AppointmentsView.AppointmentEndWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthcareInstitution.GUI.DoctorView.AppointmentsView"
+        mc:Ignorable="d"
+        Title="AppointmentEndWindow" Height="450" Width="800">
+    <DockPanel>
+        <Grid>
+            <DataGrid
+            ItemsSource="{Binding DynamicEquipment, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectedEquipment, UpdateSourceTrigger=PropertyChanged}"
+            AutoGenerateColumns="False" IsReadOnly="True"
+            DockPanel.Dock="Top" Margin="21,30,483,228" Height="NaN" Width="NaN">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding DynamicEquipment.Name}" Width="110"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding DynamicEquipment.Count}" Width="70"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+</Window>

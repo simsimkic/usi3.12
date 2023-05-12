@@ -1,0 +1,82 @@
+﻿<Window x:Class="HealthcareInstitution.GUI.PatientView.AppointmentsView.RecommendTimeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthcareInstitution.GUI.PatientView.AppointmentsView"
+        mc:Ignorable="d"
+        Title="Recommend Time" Height="550" Width="500">
+    <Window.Resources>
+        <ControlTemplate x:Key="ValidationTemplate">
+            <StackPanel>
+                <!-- Placeholder for the TextBox itself -->
+                <AdornedElementPlaceholder x:Name="datePicker" />
+                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red" />
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Width="400" Height="220" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Height="30">Doctor</Label>
+            <Label Grid.Row="1" Grid.Column="0" Height="30">Up until</Label>
+            <Label Grid.Row="2" Grid.Column="0" Height="30">From</Label>
+            <Label Grid.Row="3" Grid.Column="0" Height="30">To</Label>
+            <Label Grid.Row="4" Grid.Column="0" Height="30">Priority</Label>
+            <ComboBox Grid.Row="0" Grid.Column="1" Name="DoctorsComboBox"
+                     Height="25">
+            </ComboBox>
+            <DatePicker Grid.Row="1" Grid.Column="1"
+                     SelectedDate="{Binding Path=Appointment.Date, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+                     Height="25">
+            </DatePicker>
+            <TextBox Grid.Row="2" Grid.Column="1"
+                     Text="{Binding Path=Appointment.Time, UpdateSourceTrigger=PropertyChanged}"
+                     Height="25">
+            </TextBox>
+            <TextBox Grid.Row="3" Grid.Column="1"
+                     Text="{Binding Path=Appointment.Time, UpdateSourceTrigger=PropertyChanged}"
+                     Height="25">
+            </TextBox>
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" Height="25">
+                <RadioButton GroupName="priority" Margin="5" IsChecked="True">Doctor</RadioButton>
+                <RadioButton GroupName="priority" Margin="5">Day period</RadioButton>
+            </StackPanel>
+        </Grid>
+        <WrapPanel Grid.Row="1" FlowDirection="RightToLeft">
+            <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Margin="20, 5, 20, 5" Height="25" Width="60"
+                    Click="CancelButton_Click" />
+            <Button Content="Recommend" IsDefault="True" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Margin="20, 5, 20, 5" Height="25" Width="100"
+                    Click="RecommendAppointmentButton_Click" />
+            <Button Content="Book" HorizontalAlignment="Right" IsEnabled="False" VerticalAlignment="Bottom"
+                    Margin="140, 5, 20, 5" Height="25" Width="100"
+                    Click="RecommendAppointmentButton_Click" />
+        </WrapPanel>
+        <DataGrid Grid.Row="1" Width="420" Margin="40,42,40,37">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Binding="{Binding Appointment.Date, StringFormat=d}" Width="110"></DataGridTextColumn>
+                <DataGridTextColumn Header="Time" Binding="{Binding Appointment.Time}" Width="70"></DataGridTextColumn>
+                <DataGridTextColumn Header="Doctor's name" Binding="{Binding Doctor.Name}" Width="110"></DataGridTextColumn>
+                <DataGridTextColumn Header="Doctor's surname" Binding="{Binding Doctor.Surname}" Width="110"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

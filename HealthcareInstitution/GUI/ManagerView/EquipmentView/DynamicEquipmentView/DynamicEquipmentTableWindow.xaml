@@ -1,0 +1,30 @@
+﻿<Window x:Class="HealthcareInstitution.GUI.ManagerView.EquipmentView.DynamicEquipmentTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthcareInstitution.GUI.ManagerView.EquipmentView"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Dynamic equipment" Height="450" Width="525">
+    <Grid>
+        <DataGrid
+                ItemsSource="{Binding Path=DynamicEquipment, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding Path=SelectedDynamicEquipment, UpdateSourceTrigger=PropertyChanged}"
+                AutoGenerateColumns="False" IsReadOnly="True"
+                Width="400" Height="260" Margin="50,124,50,50">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="195"></DataGridTextColumn>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Count}" Width="195"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock HorizontalAlignment="Left" Margin="52,25,0,0" TextWrapping="Wrap" Text="Send request to order:" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="52,85,0,0" TextWrapping="Wrap" Text="{Binding SelectedDynamicEquipment.Name}" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox Name="CountTextBox" HorizontalAlignment="Center" Margin="0,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="57,60,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="207,60,0,0" TextWrapping="Wrap" Text="Quantity:" VerticalAlignment="Top"/>
+        <Button Content="Order" HorizontalAlignment="Left" Margin="362,82,0,0" VerticalAlignment="Top" Padding="30 3" Click="OrderButton_Click"/>
+        <TextBlock Name="LastOrderedTextBlock" HorizontalAlignment="Left" Margin="65,380,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Green"/>
+        <Button Content="Refresh" HorizontalAlignment="Left" Margin="410,23,0,0" VerticalAlignment="Top" Click="RefreshButton_Click"/>
+    </Grid>
+</Window>

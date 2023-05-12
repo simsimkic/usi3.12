@@ -1,0 +1,61 @@
+﻿<Window x:Class="HealthcareInstitution.GUI.PatientView.AppointmentsView.UpdateAppointmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthcareInstitution.GUI.PatientView.AppointmentsView"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Update Appointment" Height="300" Width="450">
+    <Window.Resources>
+        <ControlTemplate x:Key="ValidationTemplate">
+            <StackPanel>
+                <!-- Placeholder for the TextBox itself -->
+                <AdornedElementPlaceholder x:Name="datePicker" />
+                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red" />
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Width="400" Height="150">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Height="30">Date</Label>
+            <Label Grid.Row="1" Grid.Column="0" Height="30">Time</Label>
+            <Label Grid.Row="2" Grid.Column="0" Height="30">Doctor</Label>
+            <DatePicker Grid.Row="0" Grid.Column="1" Name="AppointmentDate"
+                     SelectedDate="{Binding Path=Appointment.Date, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource, ValidatesOnDataErrors=True}"
+                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+                     Height="25">
+            </DatePicker>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="AppointmentTime"
+                     Text="{Binding Path=Appointment.Time, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource, ValidatesOnDataErrors=True}"
+                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+                     Height="25">
+            </TextBox>
+            <ComboBox Grid.Row="2" Grid.Column="1" Name="DoctorsComboBox"
+                     Height="25">
+            </ComboBox>
+        </Grid>
+        <WrapPanel Grid.Row="1" FlowDirection="RightToLeft">
+            <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Margin="20, 5, 20, 5" Height="25" Width="50"
+                    Click="CancelButton_Click" />
+            <Button Content="Update" IsDefault="True" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Margin="20, 5, 20, 5" Height="25" Width="50"
+                    Click="UpdateAppointment_Click" />
+        </WrapPanel>
+    </Grid>
+</Window>

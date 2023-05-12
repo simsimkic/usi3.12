@@ -1,0 +1,44 @@
+﻿<Window x:Class="HealthcareInstitution.GUI.NurseView.PatientsView.PatientsTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthcareInstitution.GUI.NurseView.PatientsView"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Patients" Height="675" Width="855">
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top" Height="40">
+            <Button Click="ShowCreatePatientWindow_Click" Margin="5">
+                <AccessText>_Create</AccessText>
+            </Button>
+            <Button Click="DeletePatientButton_Click" Margin="5">
+                <AccessText>_Delete</AccessText>
+            </Button>
+            <Button Click="ShowUpdatePatientWindow_Click" Margin="5">
+                <AccessText>Update</AccessText>
+            </Button>
+        </ToolBar>
+        <Grid DockPanel.Dock="Bottom">
+            
+        <DataGrid 
+        
+        ItemsSource="{Binding Path=Patients, UpdateSourceTrigger=PropertyChanged}"
+        SelectedItem="{Binding Path=SelectedPatient, UpdateSourceTrigger=PropertyChanged}"
+        AutoGenerateColumns="False" IsReadOnly="True" Height="433" Margin="0,42,0,42" RenderTransformOrigin="0.504,0.392"
+        >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Username" Binding="{Binding Patient.Username}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding Patient.Name}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Surname" Binding="{Binding Patient.Surname}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Weight" Binding="{Binding MedicalRecord.Weight}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Height" Binding="{Binding MedicalRecord.Height}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Medical history" Binding="{Binding MedicalRecord.MedicalHistory}" Width="150"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+            <Button Content="Check In Patient" HorizontalAlignment="Left" Margin="105,559,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        </Grid>
+    </DockPanel>
+</Window>

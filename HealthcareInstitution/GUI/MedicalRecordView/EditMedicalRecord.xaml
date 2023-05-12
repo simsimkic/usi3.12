@@ -1,0 +1,67 @@
+﻿<Window x:Class="HealthcareInstitution.GUI.MedicalRecordView.EditMedicalRecord"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthcareInstitution.GUI.MedicalRecordView"
+        xmlns:conv="clr-namespace:HealthcareInstitution.Utilities.Converters"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Medical Record" Height="350" Width="600">
+    <Window.Resources>
+        <ControlTemplate x:Key="ValidationTemplate">
+            <StackPanel>
+                <!-- Placeholder for the TextBox itself -->
+                <AdornedElementPlaceholder x:Name="textBox" />
+                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red" />
+            </StackPanel>
+            
+        </ControlTemplate>
+        <conv:DimensionsConverter x:Key="dimensionsConverter"></conv:DimensionsConverter>
+    </Window.Resources>
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="280"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Width="400" Height="150">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Height="30">Weight</Label>
+            <Label Grid.Row="1" Grid.Column="0" Height="30">Height</Label>
+            <Label Grid.Row="2" Grid.Column="0" Height="30">Medical history</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Name="MedicalCardWeight"
+                     Text="{Binding Path=MedicalRecord.Weight, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=OneWayToSource}"
+                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+                     Height="25">
+            </TextBox>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="MedicalCardHeight"
+                     Text="{Binding Path=MedicalRecord.Height, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=OneWayToSource}"
+                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+                     Height="25">
+            </TextBox>
+            <TextBox Grid.Row="2" Grid.Column="1" Name="MedicalCardMedicalHistory"
+                     Text="{Binding Path=MedicalRecord.MedicalHistory, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=OneWayToSource}"
+                     Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+                     Height="25">
+            </TextBox>
+        </Grid>
+        <WrapPanel Grid.Row="1" FlowDirection="RightToLeft" Height="40" VerticalAlignment="Top" Margin="0,5,0,0" Grid.ColumnSpan="3">
+            <Button Content="Cancel" IsCancel="True" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Margin="20, 5, 20, 5"
+                    Click="CancelButton_Click" />
+            <Button Content="Update" IsDefault="True" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Margin="20, 5, 20, 5"
+                    Click="UpdateMedicalRecord_Click" />
+        </WrapPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,37 @@
+1,4,desk,RoomFurniture,1
+2,10,chair,RoomFurniture,1
+3,5,bench,HallwayEquipment,1
+4,13,bed,RoomFurniture,1
+5,2,bench,RoomFurniture,12
+6,1,cabinet,RoomFurniture,3
+7,4,cabinet,RoomFurniture,4
+8,2,chair,RoomFurniture,5
+9,2,chair,RoomFurniture,6
+10,3,chair,RoomFurniture,7
+11,3,chair,RoomFurniture,8
+12,2,bed,RoomFurniture,9
+13,2,bed,RoomFurniture,10
+14,3,bed,RoomFurniture,11
+15,3,bed,RoomFurniture,12
+16,1,surgical light,OperationEquipment,3
+17,1,surgical light,OperationEquipment,4
+18,1,scrub sink,OperationEquipment,3
+19,0,scrub sink,OperationEquipment,4
+20,3,scrub sink,OperationEquipment,1
+21,12,table,HallwayEquipment,1
+22,2,examination light,ExaminationEquipment,5
+23,2,examination light,ExaminationEquipment,6
+24,1,examination light,ExaminationEquipment,7
+25,1,examination light,ExaminationEquipment,8
+26,9,examination stool,ExaminationEquipment,1
+27,0,scrub sink,OperationEquipment,12
+28,0,examination light,ExaminationEquipment,1
+29,0,table,HallwayEquipment,12
+30,2,bench,HallwayEquipment,3
+31,0,desk,RoomFurniture,6
+32,1,desk,RoomFurniture,12
+33,0,cabinet,RoomFurniture,1
+34,2,bed,RoomFurniture,7
+35,4,examination stool,ExaminationEquipment,6
+36,2,examination stool,ExaminationEquipment,11
+37,1,scrub sink,OperationEquipment,11

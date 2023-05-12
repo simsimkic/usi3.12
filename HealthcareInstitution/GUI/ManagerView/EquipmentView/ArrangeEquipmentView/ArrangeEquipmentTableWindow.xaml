@@ -1,0 +1,42 @@
+﻿<Window x:Class="HealthcareInstitution.GUI.ManagerView.EquipmentView.ArrangeEquipmentTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthcareInstitution.GUI.ManagerView.EquipmentView"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Arrange equipment" Height="460" Width="750">
+    <Grid>
+        <DataGrid
+                ItemsSource="{Binding Path=Equipment, UpdateSourceTrigger=PropertyChanged}"
+                SelectedItem="{Binding Path=SelectedEquipment, UpdateSourceTrigger=PropertyChanged}"
+                SelectionChanged="DataGrid_SelectionChanged"
+                AutoGenerateColumns="False" IsReadOnly="True"
+                Width="600" Height="260" Margin="50,124,50,25">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="120"></DataGridTextColumn>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Count}" Width="80"></DataGridTextColumn>
+                <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="105"></DataGridTextColumn>
+                <DataGridTextColumn Header="RoomId" Binding="{Binding RoomId}" Width="80"></DataGridTextColumn>
+                <DataGridTextColumn Header="Room type" Binding="{Binding RoomType}" Width="140"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock HorizontalAlignment="Left" Margin="67,28,0,0" TextWrapping="Wrap" Text="From:" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Left" Margin="67,85,0,0" TextWrapping="Wrap" Text="{Binding SelectedEquipment.Id}" VerticalAlignment="Top" Width="40" IsEnabled="False"/>
+        <TextBox HorizontalAlignment="Left" Margin="122,85,0,0" TextWrapping="Wrap" Text="{Binding SelectedEquipment.Name}" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <TextBox Name="CountTextBox" HorizontalAlignment="Left" Margin="257,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
+        <TextBox Name="DateTimeTextBox" HorizontalAlignment="Left" Margin="257,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="72,60,0,0" TextWrapping="Wrap" Text="Id:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="127,60,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="262,60,0,0" TextWrapping="Wrap" Text="Quantity:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="262,11,0,0" TextWrapping="Wrap" Text="When:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="318,14,0,0" TextWrapping="Wrap" Text="dd.MM.yyyy. HH:mm" VerticalAlignment="Top" FontSize="11" Foreground="#FF9C7070"/>
+        <TextBlock HorizontalAlignment="Left" Margin="439,60,0,0" TextWrapping="Wrap" Text="Destination:" VerticalAlignment="Top"/>
+        <Button Content="Move" HorizontalAlignment="Left" Margin="575,81,0,0" VerticalAlignment="Top" Padding="30 3" Click="MoveButton_Click"/>
+        <ComboBox Name="DestinationComboBox" HorizontalAlignment="Left" Margin="434,82,0,0" VerticalAlignment="Top" Width="122" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="434,28,0,0" TextWrapping="Wrap" Text="To:" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Refresh" HorizontalAlignment="Left" Margin="622,23,0,0" VerticalAlignment="Top" Click="RefreshButton_Click"/>
+    </Grid>
+</Window>
